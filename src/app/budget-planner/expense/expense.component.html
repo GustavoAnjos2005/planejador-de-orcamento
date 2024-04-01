@@ -1,0 +1,63 @@
+<div class="navbar">
+    <h2>DESPESA</h2>
+</div>
+
+<div class="main-container">
+    <div class="container">
+        <h2>Despesa</h2>
+        <form [formGroup]="expenseForm" (ngSubmit)="onSubmitExpense()" class="input-form">
+            <div class="form-group">
+                <select formControlName="month" id="month" class="form-control" (change)="onChangeExpense($event)">
+                    <option value="" disabled>Escolha o Mês</option>
+                    <option value="Janeiro">Janeiro</option>
+                    <option value="Fevereiro">Fevereiro</option>
+                    <option value="Março">Março</option>
+                </select>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="total-expense">
+                Despesa Total de {{ selectedMonth }}: ${{ calculateTotalExpense(selectedMonth) }}
+            </div>
+            <div class="form-group">
+                <label for="expenseType">Tipo de Despesa:</label>
+                <select formControlName="expenseType" id="expenseType" class="form-control"
+                    [class.disabled-dropdown]="!monthSelected">
+                    <option value="" disabled>Seleciona o Tipo de Despesa</option>
+                    <option value="Rent">Aluguel</option>
+                    <option value="Groceries">Mantimentos</option>
+                    <option value="Utilities">Serviços Públicos</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="expenseAmount">Quantia:</label>
+                <input type="number" formControlName="expenseAmount" id="expenseAmount" class="form-control"
+                    placeholder="Coloque a Quantia" [class.disabled-dropdown]="!monthSelected">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="onSubmitExpense()"
+                [class.disabled-dropdown]="!monthSelected">Adicionar Despesa</button>
+        </form>
+        <hr>
+        <h3>Lista de Despesa - {{ selectedMonth }}</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tipo de Despesa</th>
+                    <th>Quantia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let expense of getFilteredExpenses()">
+                    <td>{{ expense.expenseType }}</td>
+                    <td>{{ expense.expenseAmount }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="input-form">
+            <button class="btn btn-primary" (click)="onBack()">Voltar</button>
+            <div class="form-group">
+            </div>
+            <button class="btn btn-primary" (click)="saveForm()">Salvar</button>
+        </div>
+    </div>
+</div>

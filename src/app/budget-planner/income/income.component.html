@@ -1,0 +1,80 @@
+<div class="navbar">
+    <h2>RENDA</h2>
+</div>
+
+<div class="main-container">
+    <div class="container">
+        <h2>Renda</h2>
+        <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()" class="input-form">
+            <div class="form-group">
+                <select formControlName="month" id="month" class="form-control" (change)="onChange($event)">
+                    <option value="" disabled>Escolha o Mês</option>
+                    <option value="Janeiro">Janeiro</option>
+                    <option value="Fevereiro">Fevereiro</option>
+                    <option value="Março">Março</option>
+                </select>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="total-income">
+                Renda Total de {{ selectedMonth }}: ${{ calculateTotalIncome(selectedMonth) }}
+            </div>
+            <div class="form-group">
+                <label for="investments">Investimentos:</label>
+                <select formControlName="investments" id="investments" class="form-control"
+                    [class.disabled-dropdown]="!monthSelected">
+                    <option value="" disabled>Escolha o Investimento</option>
+                    <option value="401(k)">CDI</option>
+                    <option value="Stocks">Ações</option>
+                    <option value="Real Estate">Imoboliária</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="source">Fonte de Renda:</label>
+                <select formControlName="source" id="source" class="form-control"
+                    [class.disabled-dropdown]="!monthSelected">
+                    <option value="" disabled>Escolha a Fonte</option>
+                    <option value="Salary">Salário</option>
+                    <option value="Freelancing">FreeLance</option>
+                    <option value="Rental Income">Receita Locativa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Quantia:</label>
+                <input type="number" formControlName="amount" id="amount" class="form-control"
+                    placeholder="Coloque a Quantia" [class.disabled-dropdown]="!monthSelected">
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()"
+            [class.disabled-dropdown]="!monthSelected">Add</button>
+        </form>
+
+        <hr>
+        <h3>Lista de Renda - {{ selectedMonth }}</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Fonte de Renda</th>
+                    <th>Quantia</th>
+                    <th>Investimentos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let income of getFilteredIncomes()">
+                    <td>{{ income.source }}</td>
+                    <td>{{ income.amount }}</td>
+                    <td>{{ income.investments }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="input-form">
+            <button class="btn btn-primary" (click)="onBack()">Voltar</button>
+            <div class="form-group">
+            </div>
+            <button class="btn btn-primary" (click)="saveForm()">Salvar</button>
+        </div>
+    </div>
+</div>

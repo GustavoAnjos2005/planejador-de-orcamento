@@ -1,0 +1,152 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: calc(100% - 40px);
+  max-width: 1200px;
+}
+
+.card {
+  position: relative;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(50% - 40px);
+  max-width: 400px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+h2 {
+  color: #333;
+  font-size: 22px;
+  margin: 0;
+}
+
+.card-header .icon {
+  transition: background-color 0.3s ease;
+}
+
+.card:hover .icon {
+  background-color: #ccc;
+}
+
+.income-icon {
+  background-color: #e2ce9c;
+}
+
+.expense-icon {
+  background-color: #be7886;
+}
+
+.todo-icon {
+  background-color: #87dcdc;
+}
+
+.trans-icon {
+  background-color: #f1afd9;
+}
+
+.total-icon {
+  background-color: #8dcda9;
+}
+
+.total-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.total-item p {
+  margin-left: 10px;
+}
+
+h3 {
+  color: #555;
+  font-size: 16px;
+  margin: 0;
+}
+
+p {
+  color: #333;
+  font-size: 14px;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transaction-status {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.transaction-status mat-icon {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+  color: #4caf50;
+}
+
+.transaction-details {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.transaction-details.completed {
+  text-decoration: line-through;
+}
+
+.mat-icon {
+  font-size: 24px;
+  color: #fff;
+}
+
+.button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #008080, #80ced6);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background: #80ced6;
+}

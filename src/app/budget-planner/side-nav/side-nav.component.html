@@ -1,0 +1,19 @@
+<div class="navbar">
+    <h2>Hub Code Fusion</h2>
+</div>
+
+<div>
+    <div class="toggle-button-row" (click)="toggleSlideOut()">
+    <mat-icon>menu</mat-icon>
+    </div>
+</div>
+
+<div class="slide-out-panel" [class.slide-out]="isSlideOut">
+    <div class="slide-out-content">
+        <h3 class="nav">Planejador de Orçamento</h3>
+        <p class="edit-col" (click)="onDash()">Painel</p>
+        <p class="edit-col" (click)="onProfile()">Perfil</p>
+        <p class="edit-col" (click)="onHistory()">Histórico</p>
+        <p class="edit-col" (click)="onLogout()">Deslogar</p>
+    </div>
+</div>

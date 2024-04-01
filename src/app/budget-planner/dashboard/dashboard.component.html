@@ -1,0 +1,89 @@
+<app-side-nav></app-side-nav>
+<div class="container">
+    <div class="card-container">
+        <div class="card">
+            <div class="card-header">
+                <span class="icon income-icon"><mat-icon>attach_money</mat-icon></span>
+                <h2>Renda</h2>
+            </div>
+            <hr>
+            <div class="income-details">
+                <div class="month">
+                    <h3>Últimos meses</h3>
+                    <ul>
+                        <li *ngFor="let monthIncome of lastMonthsIncome">{{ monthIncome }}</li>
+                    </ul>
+                </div>
+                <div class="month">
+                    <h3>Mês Atual</h3>
+                    <p>{{ currentMonthIncome }}</p>
+                </div>
+                <button class="button" (click)="onIncome()">Veja</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="icon expense-icon"><mat-icon>money_off</mat-icon></span>
+                <h2>Despesa</h2>
+            </div>
+            <hr>
+            <div class="income-details">
+                <div class="month">
+                    <h3>Últimos meses</h3>
+                    <ul>
+                        <li *ngFor="let monthExpense of lastMonthsExpense">{{ monthExpense }}</li>
+                    </ul>
+                </div>
+                <div class="month">
+                    <h3>Mês Atual</h3>
+                    <p>{{ currentMonthExpense }}</p>
+                </div>
+            </div>
+            <button class="button" (click)="onExpense()">Veja</button>
+        </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon todo-icon"><mat-icon>assignment</mat-icon></span>
+                    <h2>Fazer Transações</h2>
+                </div>
+                <hr>
+                    <ul>
+                        <li *ngFor="let item of todoTransactions">
+                        <span class="transaction-status"><mat-icon>hourglass_empty</mat-icon>
+                        </span>
+                    <span class="transaction-details">{{ item.description }}</span>
+                        </li>
+                    </ul>
+            <button class="button" (click)="onTodo()">Veja</button>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="icon todo-icon"><mat-icon>timeline</mat-icon></span>
+                <h2>Renda Total</h2>
+            </div>
+            <hr>
+            <div class="total-details">
+                <div class="total-item">
+                    <span class="icon income-icon"><mat-icon>attach_money</mat-icon></span>
+                    <h3>Renda do Mês Atual</h3>
+                    <p>{{ totalCurrentMonthIncome | currency }}</p>
+                </div>
+                <div class="total-details">
+                    <div class="total-item">
+                        <span class="icon expense-icon"><mat-icon>money_off</mat-icon></span>
+                        <h3>Despesas do Mês Atual</h3>
+                        <p>{{ totalCurrentMonthExpense | currency }}</p>
+                    </div>
+                    <div class="total-details">
+                        <div class="total-item">
+                            <span class="icon trans-icon"><mat-icon>account_balance_wallet</mat-icon></span>
+                            <h3>Economia do Mês Atual</h3>
+                            <p>{{ currentMonthSavings | currency }}</p>
+                 </div>
+            </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<app-side-nav></app-side-nav>
+<div class="main-container">
+    <div class="container">
+        <h2>Histórico de Transação</h2>
+        <form [formGroup]="todoForm" (ngSubmit)="onSubmitExpense()" class="input-form">
+            <div class="form-group">
+                <select formControlName="month" id="month" class="form-control" (change)="onChangeExpense($event)">
+                    <option value="" disabled>Escolha o Mês</option>
+                    <option value="Janeiro">Janeiro</option>
+                    <option value="Fevereiro">Fevereiro</option>
+                    <option value="Março">Março</option>
+                </select>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="total-todoTrans">
+                Transactions for {{ selectedMonth }}: ${{ calculateTotalExpense(selectedMonth) }}
+            </div>
+        </form>
+        <hr>
+        <h3>Histórico de Transação - {{ selectedMonth }}</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tipo de Transação</th>
+                    <th>Quantia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todoTrans of getFilteredExpenses()">
+                    <td>{{ todoTrans.expenseType }}</td>
+                    <td>{{ todoTrans.expenseAmount }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="input-form">
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+            </div>
+            <button class="btn btn-primary" (click)="onBack()">Voltar</button>
+        </div>
+    </div>
+</div>
